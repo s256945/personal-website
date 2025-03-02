@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import "./App.css";
 
 export default function TerminalPortfolio() {
   const [input, setInput] = useState<string>("");
@@ -6,12 +7,14 @@ export default function TerminalPortfolio() {
   const [history, setHistory] = useState<string[]>([]);
 
   const commands: Record<string, string> = {
-    help: "Available commands: ls, about, projects, contact, clear",
-    ls: "about.txt  projects/  contact.txt",
+    help: "<span class='command-success'>Available commands:</span> <span class='command-success'>ls</span>, <span class='command-success'>about</span>, <span class='command-success'>projects</span>, <span class='command-success'>contact</span>, <span class='command-success'>clear</span>",
+    ls: "<span class='command-success'>about.txt</span>  <span class='command-success'>projects/</span>  <span class='command-success'>contact.txt</span>",
     about:
-      "I'm Amy Jordan, a software engineer specializing in React and Flask.",
-    projects: "Project 1: Emergency Alert System | Project 2: Brownies Website",
-    contact: "Email: amy@example.com | GitHub: github.com/amyjordan",
+      "<span class='command-success'>I'm Amy Jordan, a Full-Stack Software Engineer specialising in Front-End with React&TypeScript.</span>",
+    projects:
+      "<span class='command-success'>Project 1:</span> Emergency Alert System | <span class='command-success'>Project 2:</span> Brownies Website",
+    contact:
+      "<span class='command-success'>Email:</span> amy@example.com | <span class='command-success'>GitHub:</span> github.com/amyjordan",
     clear: "clear",
   };
 
@@ -22,13 +25,17 @@ export default function TerminalPortfolio() {
         if (input === "clear") {
           setOutput([]);
         } else {
-          setOutput([...output, `> ${input}`, commands[input]]);
+          setOutput([
+            ...output,
+            `> <span class='command-line'>${input}</span>`,
+            commands[input],
+          ]);
         }
       } else {
         setOutput([
           ...output,
-          `> ${input}`,
-          "Command not found. Type 'help' for available commands.",
+          `> <span class='command-line'>${input}</span>`,
+          "<span class='command-error'>Command not found.</span> Type '<span class='command-success'>help</span>' for available commands.",
         ]);
       }
       setInput("");
@@ -46,21 +53,27 @@ export default function TerminalPortfolio() {
   }, [input, output, history]);
 
   return (
-    <div className="h-screen bg-black text-green-400 font-mono p-4">
-      <div className="max-w-2xl mx-auto">
-        <p>Welcome to Amy's Terminal Portfolio. Type 'help' for commands.</p>
-        <div className="mt-2">
+    <div className="terminal-container">
+      <div className="terminal-box">
+        <p className="terminal-header">Welcome to Amy's Terminal Portfolio</p>
+        <p className="terminal-subheader">
+          Type 'help' for available commands.
+        </p>
+        <div className="terminal-output">
           {output.map((line, index) => (
-            <p key={index}>{line}</p>
+            <p
+              key={index}
+              className="terminal-line"
+              dangerouslySetInnerHTML={{ __html: line }}
+            ></p>
           ))}
         </div>
-        <div className="flex">
-          <span className="mr-2">$</span>
+        <div className="terminal-input">
+          <span>$</span>
           <input
             type="text"
             value={input}
             onChange={(e) => setInput(e.target.value)}
-            className="bg-black text-green-400 outline-none w-full"
             autoFocus
           />
         </div>

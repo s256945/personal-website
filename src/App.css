@@ -1,38 +1,83 @@
-.App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+/* TerminalPortfolio.css */
+.terminal-container {
+  height: 100vh;
+  background-color: black;
+  color: #4caf50; /* Green color */
+  font-family: 'Courier New', Courier, monospace;
   display: flex;
-  flex-direction: column;
-  align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  align-items: center;
 }
 
-.App-link {
-  color: #61dafb;
+.terminal-box {
+  max-width: 40rem;
+  width: 100%;
+  background-color: black;
+  padding: 1.5rem;
+  border-radius: 0.5rem;
+  box-shadow: 0 0 10px rgba(0, 255, 0, 0.5);
+  border: 1px solid #00e676; /* Green border */
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.terminal-header {
+  font-size: 1.25rem;
+  font-weight: bold;
+}
+
+.terminal-subheader {
+  font-size: 0.875rem;
+  margin-bottom: 1rem;
+}
+
+.terminal-output {
+  margin-top: 0.5rem;
+  overflow: auto;
+  height: 16rem;
+  background-color: black;
+  padding: 0.5rem;
+  border: 1px solid #00e676;
+  border-radius: 0.25rem;
+}
+
+.terminal-line {
+  color: #00e676; /* Green color */
+}
+
+.terminal-line .command {
+  color: #4caf50; /* Green color */
+}
+
+.terminal-input {
+  display: flex;
+  margin-top: 0.5rem;
+  background-color: black;
+  padding: 0.5rem;
+  border: 1px solid #00e676;
+  border-radius: 0.25rem;
+}
+
+.terminal-input span {
+  margin-right: 0.5rem;
+  color: #00e676; /* Green color */
+}
+
+.terminal-input input {
+  background-color: black;
+  color: #4caf50; /* Green color */
+  width: 100%;
+  border: none;
+  outline: none;
+  caret-color: #00e676;
+}
+
+.terminal-output span {
+  color: #00bcd4; /* Cyan color */
+}
+
+.command-error {
+  color: #f44336; /* Red color */
+}
+
+.command-success {
+  color: #8e24aa; /* Purple color */
 }
