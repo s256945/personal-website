@@ -6,6 +6,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  transition: background-color 0.5s ease;
 }
 
 .terminal-box {
@@ -16,6 +17,7 @@
   border-radius: 0.5rem;
   box-shadow: 0 0 10px rgba(0, 255, 0, 0.5);
   border: 1px solid #00e676;
+  transition: box-shadow 0.3s ease, border 0.3s ease;
 }
 
 .terminal-header {
@@ -38,34 +40,12 @@
   padding: 0.5rem;
   border: 1px solid #00e676;
   border-radius: 0.25rem;
+  transition: background-color 0.3s ease;
 }
 
 .terminal-line {
   color: #00e676;
-}
-
-.terminal-line .command-line {
-  color: #4caf50;
-}
-
-.terminal-line .command-info {
-  color: #00bcd4;
-}
-
-.terminal-line .command-blue {
-  color: #2196f3;
-}
-
-.terminal-line .command-green {
-  color: #4caf50;
-}
-
-.terminal-line .command-teal {
-  color: #009688;
-}
-
-.terminal-line .command-orange {
-  color: #ff9800;
+  animation: fadeIn 0.3s ease-in-out;
 }
 
 .terminal-input {
@@ -75,6 +55,7 @@
   padding: 0.5rem;
   border: 1px solid #00e676;
   border-radius: 0.25rem;
+  transition: border 0.3s ease;
 }
 
 .terminal-input span {
@@ -83,22 +64,40 @@
 }
 
 .terminal-input input {
-  background-color: #121212;
+  background-color: black;
   color: #4caf50;
   width: 100%;
   border: none;
   outline: none;
   caret-color: #00e676;
+  position: relative;
 }
 
-.terminal-output span {
-  color: #00bcd4;
+.input-wrapper {
+  position: relative;
+  width: 100%;
+}
+
+.suggestion-item {
+  position: absolute;
+  top: 0;
+  color: rgba(255, 255, 255, 0.5);
+  pointer-events: none;
+  user-select: none;
+  white-space: nowrap;
+  z-index: 1;
+  transition: left 0.1s ease;
 }
 
 .command-error {
   color: #f44336;
 }
 
-.command-success {
-  color: #8e24aa;
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }

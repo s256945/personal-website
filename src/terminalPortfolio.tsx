@@ -5,8 +5,9 @@ export default function TerminalPortfolio() {
   const [input, setInput] = useState<string>("");
   const [output, setOutput] = useState<string[]>([]);
   const [history, setHistory] = useState<string[]>([]);
-
+  const [suggestion, setSuggestion] = useState<string>("");
   const outputRef = useRef<HTMLDivElement>(null);
+  const inputRef = useRef<HTMLInputElement>(null);
 
   const commands: Record<string, string> = {
     help: "<span class='command-info'>Available commands:</span> <span class='command-info'>ls</span>, <span class='command-info'>about</span>, <span class='command-info'>projects</span>, <span class='command-info'>contact</span>, <span class='command-info'>clear</span>",
@@ -41,18 +42,79 @@ export default function TerminalPortfolio() {
         ]);
       }
       setInput("");
+      setSuggestion("");
     }
   };
 
+  // Update suggestions when the input changes
+  useEffect(() => {
+    if (input.trim() === "") {
+      setSuggestion("");
+    } else {
+      const filteredCommands = Object.keys(commands).filter((cmd) =>
+        cmd.startsWith(input)
+      );
+
+      if (filteredCommands.length === 1) {
+        setSuggestion(filteredCommands[0].slice(input.length));
+      } else {
+        setSuggestion("");
+      }
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [input]);
+
+  // Update the suggestion's position based on the caret
+  useEffect(() => {
+    if (inputRef.current && suggestion) {
+      const input = inputRef.current;
+      const caretPosition = input.selectionStart;
+
+      if (caretPosition !== null) {
+        const span = document.createElement("span");
+        span.style.visibility = "hidden";
+        span.style.position = "absolute";
+        span.style.whiteSpace = "pre";
+        span.style.fontFamily = "Courier New, Courier, monospace";
+        span.innerText = input.value.substring(0, caretPosition);
+        document.body.appendChild(span);
+
+        const spanRect = span.getBoundingClientRect();
+        const leftPosition = spanRect.right;
+        document.body.removeChild(span);
+
+        // Position the suggestion correctly next to the input text
+        const suggestionElement = input.nextElementSibling as HTMLElement;
+        if (suggestionElement) {
+          suggestionElement.style.left = `${leftPosition}px`;
+        }
+      }
+    }
+  }, [input, suggestion]);
+
+  // Handle key events (Enter, Tab, ArrowUp, etc.)
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === "Enter") {
         handleCommand();
+      } else if (e.key === "ArrowUp") {
+        if (history.length) {
+          setInput(history[history.length - 1]);
+        }
+      } else if (e.key === "Tab") {
+        // Handle autocomplete when tab is pressed
+        e.preventDefault(); // Prevent default tab behavior (switching focus)
+        if (suggestion) {
+          setInput(input + suggestion);
+          setSuggestion("");
+        }
       }
     };
+
     window.addEventListener("keydown", handleKeyDown);
     return () => window.removeEventListener("keydown", handleKeyDown);
-  }, [input, output, history]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [input, output, history, suggestion]);
 
   useEffect(() => {
     if (outputRef.current) {
@@ -78,12 +140,18 @@ export default function TerminalPortfolio() {
         </div>
         <div className="terminal-input">
           <span>$</span>
-          <input
-            type="text"
-            value={input}
-            onChange={(e) => setInput(e.target.value)}
-            autoFocus
-          />
+          <div className="input-wrapper">
+            <input
+              ref={inputRef}
+              type="text"
+              value={input}
+              onChange={(e) => setInput(e.target.value)}
+              autoFocus
+            />
+            {suggestion && (
+              <span className="suggestion-item">{suggestion}</span>
+            )}
+          </div>
         </div>
       </div>
     </div>
