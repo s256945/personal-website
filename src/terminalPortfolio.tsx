@@ -10,14 +10,14 @@ export default function TerminalPortfolio() {
   const inputRef = useRef<HTMLInputElement>(null);
 
   const commands: Record<string, string> = {
-    help: "<span class='command-info'>Available commands:</span> <span class='command-info'>ls</span>, <span class='command-info'>about</span>, <span class='command-info'>projects</span>, <span class='command-info'>contact</span>, <span class='command-info'>clear</span>",
-    ls: "<span class='command-blue'>about.txt</span>  <span class='command-blue'>projects/</span>  <span class='command-blue'>contact.txt</span>",
+    help: "<span class='command-text'>Available commands:</span> <span class='command-text'>ls</span>, <span class='command-text'>about</span>, <span class='command-text'>projects</span>, <span class='command-text'>contact</span>, <span class='command-text'>clear</span>",
+    ls: "<span class='command-text'>about.txt</span>  <span class='command-text'>projects/</span>  <span class='command-text'>contact.txt</span>",
     about:
-      "<span class='command-green'>I'm Amy Jordan, a software engineer specializing in React and Flask.</span>",
+      "<span class='command-text'>I'm Amy Jordan, a Software Engineer Degree Apprentice specializing in React and Flask.</span>",
     projects:
-      "<span class='command-teal'>Project 1:</span> Emergency Alert System | <span class='command-teal'>Project 2:</span> Brownies Website",
+      "<span class='command-text'>Project 1:</span> Emergency Alert System | <span class='command-text'>Project 2:</span> Brownies Website",
     contact:
-      "<span class='command-orange'>Email:</span> amy@example.com | <span class='command-orange'>GitHub:</span> github.com/amyjordan",
+      "<span class='command-text'>Email:</span> amyj5165@gmail.com | <span class='command-text'>GitHub:</span> <a href='https://github.com/s256945' target='_blank' class='command-link'>github.com/s256945</a>",
     clear: "clear",
   };
 
@@ -30,14 +30,14 @@ export default function TerminalPortfolio() {
         } else {
           setOutput([
             ...output,
-            `> <span class='command-line'>${input}</span>`,
+            `> <span class='command-line user-command'>${input}</span>`,
             commands[input],
           ]);
         }
       } else {
         setOutput([
           ...output,
-          `> <span class='command-line'>${input}</span>`,
+          `> <span class='command-line user-command'>${input}</span>`,
           "<span class='command-error'>Command not found.</span> Type '<span class='command-info'>help</span>' for available commands.",
         ]);
       }
@@ -125,7 +125,7 @@ export default function TerminalPortfolio() {
   return (
     <div className="terminal-container">
       <div className="terminal-box">
-        <p className="terminal-header">Welcome to Amy's Terminal Portfolio</p>
+        <p className="terminal-header">Welcome to Amy's Personal Website</p>
         <p className="terminal-subheader">
           Type 'help' for available commands.
         </p>

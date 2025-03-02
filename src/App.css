@@ -1,12 +1,11 @@
 .terminal-container {
   height: 100vh;
   background-color: #121212;
-  color: #4caf50;
+  color: #a9a9a9;
   font-family: "Courier New", Courier, monospace;
   display: flex;
   justify-content: center;
   align-items: center;
-  transition: background-color 0.5s ease;
 }
 
 .terminal-box {
@@ -15,21 +14,20 @@
   background-color: #1e1e1e;
   padding: 1.5rem;
   border-radius: 0.5rem;
-  box-shadow: 0 0 10px rgba(0, 255, 0, 0.5);
-  border: 1px solid #00e676;
-  transition: box-shadow 0.3s ease, border 0.3s ease;
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+  border: 1px solid #a9a9a9;
 }
 
 .terminal-header {
   font-size: 1.25rem;
   font-weight: bold;
-  color: #8e24aa;
+  color: #ffffff;
 }
 
 .terminal-subheader {
   font-size: 0.875rem;
   margin-bottom: 1rem;
-  color: #00bcd4;
+  color: #b0b0b0;
 }
 
 .terminal-output {
@@ -38,14 +36,24 @@
   height: 16rem;
   background-color: #121212;
   padding: 0.5rem;
-  border: 1px solid #00e676;
+  border: 1px solid #444444;
   border-radius: 0.25rem;
-  transition: background-color 0.3s ease;
 }
 
 .terminal-line {
-  color: #00e676;
-  animation: fadeIn 0.3s ease-in-out;
+  color: #a9a9a9;
+}
+
+.user-command {
+  color: #4caf50;
+}
+
+.command-text {
+  color: #ffffff;
+}
+
+.command-error {
+  color: #f44336;
 }
 
 .terminal-input {
@@ -53,24 +61,22 @@
   margin-top: 0.5rem;
   background-color: #121212;
   padding: 0.5rem;
-  border: 1px solid #00e676;
+  border: 1px solid #444444;
   border-radius: 0.25rem;
-  transition: border 0.3s ease;
 }
 
 .terminal-input span {
   margin-right: 0.5rem;
-  color: #00e676;
+  color: #a9a9a9;
 }
 
 .terminal-input input {
   background-color: black;
-  color: #4caf50;
+  color: #a9a9a9;
   width: 100%;
   border: none;
   outline: none;
-  caret-color: #00e676;
-  position: relative;
+  caret-color: #ffffff;
 }
 
 .input-wrapper {
@@ -81,23 +87,19 @@
 .suggestion-item {
   position: absolute;
   top: 0;
-  color: rgba(255, 255, 255, 0.5);
+  color: rgba(169, 169, 169, 0.6);
   pointer-events: none;
   user-select: none;
   white-space: nowrap;
   z-index: 1;
-  transition: left 0.1s ease;
 }
 
-.command-error {
-  color: #f44336;
+.command-link {
+  color: #4caf50;
+  text-decoration: none;
+  cursor: pointer;
 }
 
-@keyframes fadeIn {
-  0% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
+.command-link:hover {
+  text-decoration: underline;
 }
