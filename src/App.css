@@ -1,9 +1,8 @@
-/* TerminalPortfolio.css */
 .terminal-container {
   height: 100vh;
-  background-color: black;
-  color: #4caf50; /* Green color */
-  font-family: 'Courier New', Courier, monospace;
+  background-color: #121212;
+  color: #4caf50;
+  font-family: "Courier New", Courier, monospace;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -12,45 +11,67 @@
 .terminal-box {
   max-width: 40rem;
   width: 100%;
-  background-color: black;
+  background-color: #1e1e1e;
   padding: 1.5rem;
   border-radius: 0.5rem;
   box-shadow: 0 0 10px rgba(0, 255, 0, 0.5);
-  border: 1px solid #00e676; /* Green border */
+  border: 1px solid #00e676;
 }
 
 .terminal-header {
   font-size: 1.25rem;
   font-weight: bold;
+  color: #8e24aa;
 }
 
 .terminal-subheader {
   font-size: 0.875rem;
   margin-bottom: 1rem;
+  color: #00bcd4;
 }
 
 .terminal-output {
   margin-top: 0.5rem;
   overflow: auto;
   height: 16rem;
-  background-color: black;
+  background-color: #121212;
   padding: 0.5rem;
   border: 1px solid #00e676;
   border-radius: 0.25rem;
 }
 
 .terminal-line {
-  color: #00e676; /* Green color */
+  color: #00e676;
 }
 
-.terminal-line .command {
-  color: #4caf50; /* Green color */
+.terminal-line .command-line {
+  color: #4caf50;
+}
+
+.terminal-line .command-info {
+  color: #00bcd4;
+}
+
+.terminal-line .command-blue {
+  color: #2196f3;
+}
+
+.terminal-line .command-green {
+  color: #4caf50;
+}
+
+.terminal-line .command-teal {
+  color: #009688;
+}
+
+.terminal-line .command-orange {
+  color: #ff9800;
 }
 
 .terminal-input {
   display: flex;
   margin-top: 0.5rem;
-  background-color: black;
+  background-color: #121212;
   padding: 0.5rem;
   border: 1px solid #00e676;
   border-radius: 0.25rem;
@@ -58,12 +79,12 @@
 
 .terminal-input span {
   margin-right: 0.5rem;
-  color: #00e676; /* Green color */
+  color: #00e676;
 }
 
 .terminal-input input {
-  background-color: black;
-  color: #4caf50; /* Green color */
+  background-color: #121212;
+  color: #4caf50;
   width: 100%;
   border: none;
   outline: none;
@@ -71,13 +92,13 @@
 }
 
 .terminal-output span {
-  color: #00bcd4; /* Cyan color */
+  color: #00bcd4;
 }
 
 .command-error {
-  color: #f44336; /* Red color */
+  color: #f44336;
 }
 
 .command-success {
-  color: #8e24aa; /* Purple color */
+  color: #8e24aa;
 }

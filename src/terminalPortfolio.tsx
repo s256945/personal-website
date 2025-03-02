@@ -9,14 +9,14 @@ export default function TerminalPortfolio() {
   const outputRef = useRef<HTMLDivElement>(null);
 
   const commands: Record<string, string> = {
-    help: "<span class='command-success'>Available commands:</span> <span class='command-success'>ls</span>, <span class='command-success'>about</span>, <span class='command-success'>projects</span>, <span class='command-success'>contact</span>, <span class='command-success'>clear</span>",
-    ls: "<span class='command-success'>about.txt</span>  <span class='command-success'>projects/</span>  <span class='command-success'>contact.txt</span>",
+    help: "<span class='command-info'>Available commands:</span> <span class='command-info'>ls</span>, <span class='command-info'>about</span>, <span class='command-info'>projects</span>, <span class='command-info'>contact</span>, <span class='command-info'>clear</span>",
+    ls: "<span class='command-blue'>about.txt</span>  <span class='command-blue'>projects/</span>  <span class='command-blue'>contact.txt</span>",
     about:
-      "<span class='command-success'>I'm Amy Jordan, a software engineer specializing in React and Flask.</span>",
+      "<span class='command-green'>I'm Amy Jordan, a software engineer specializing in React and Flask.</span>",
     projects:
-      "<span class='command-success'>Project 1:</span> Emergency Alert System | <span class='command-success'>Project 2:</span> Brownies Website",
+      "<span class='command-teal'>Project 1:</span> Emergency Alert System | <span class='command-teal'>Project 2:</span> Brownies Website",
     contact:
-      "<span class='command-success'>Email:</span> amy@example.com | <span class='command-success'>GitHub:</span> github.com/amyjordan",
+      "<span class='command-orange'>Email:</span> amy@example.com | <span class='command-orange'>GitHub:</span> github.com/amyjordan",
     clear: "clear",
   };
 
@@ -37,7 +37,7 @@ export default function TerminalPortfolio() {
         setOutput([
           ...output,
           `> <span class='command-line'>${input}</span>`,
-          "<span class='command-error'>Command not found.</span> Type '<span class='command-success'>help</span>' for available commands.",
+          "<span class='command-error'>Command not found.</span> Type '<span class='command-info'>help</span>' for available commands.",
         ]);
       }
       setInput("");
