@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import "./App.css";
 
 export default function TerminalPortfolio() {
@@ -6,11 +6,13 @@ export default function TerminalPortfolio() {
   const [output, setOutput] = useState<string[]>([]);
   const [history, setHistory] = useState<string[]>([]);
 
+  const outputRef = useRef<HTMLDivElement>(null);
+
   const commands: Record<string, string> = {
     help: "<span class='command-success'>Available commands:</span> <span class='command-success'>ls</span>, <span class='command-success'>about</span>, <span class='command-success'>projects</span>, <span class='command-success'>contact</span>, <span class='command-success'>clear</span>",
     ls: "<span class='command-success'>about.txt</span>  <span class='command-success'>projects/</span>  <span class='command-success'>contact.txt</span>",
     about:
-      "<span class='command-success'>I'm Amy Jordan, a Full-Stack Software Engineer specialising in Front-End with React&TypeScript.</span>",
+      "<span class='command-success'>I'm Amy Jordan, a software engineer specializing in React and Flask.</span>",
     projects:
       "<span class='command-success'>Project 1:</span> Emergency Alert System | <span class='command-success'>Project 2:</span> Brownies Website",
     contact:
@@ -52,6 +54,12 @@ export default function TerminalPortfolio() {
     return () => window.removeEventListener("keydown", handleKeyDown);
   }, [input, output, history]);
 
+  useEffect(() => {
+    if (outputRef.current) {
+      outputRef.current.scrollTop = outputRef.current.scrollHeight;
+    }
+  }, [output]);
+
   return (
     <div className="terminal-container">
       <div className="terminal-box">
@@ -59,7 +67,7 @@ export default function TerminalPortfolio() {
         <p className="terminal-subheader">
           Type 'help' for available commands.
         </p>
-        <div className="terminal-output">
+        <div className="terminal-output" ref={outputRef}>
           {output.map((line, index) => (
             <p
               key={index}
