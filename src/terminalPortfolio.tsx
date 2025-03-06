@@ -6,14 +6,17 @@ export default function TerminalPortfolio() {
   const [output, setOutput] = useState<string[]>([]);
   const [history, setHistory] = useState<string[]>([]);
   const [suggestion, setSuggestion] = useState<string>("");
+  const [awaitingConfirmation, setAwaitingConfirmation] = useState(false);
   const outputRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
 
   const commands: Record<string, string> = {
     help: "<span class='command-text'>Available commands:</span> <span class='command-text'>ls</span>, <span class='command-text'>about</span>, <span class='command-text'>projects</span>, <span class='command-text'>contact</span>, <span class='command-text'>clear</span>",
-    ls: "<span class='command-text'>about/</span>  <span class='command-text'>projects/</span>  <span class='command-text'>contact/</span>",
-    about:
-      "<span class='command-text'>I'm Amy, a Software Engineer Degree Apprentice specialising in Front-End using React and JS.</span>",
+    ls: `<span class='command-text'>./about</span> &nbsp; <span class='command-text'>./projects</span> &nbsp; <span class='command-text'>./contact</span> &nbsp; <span class='command-text'>./cv</span>`,
+    about: `<span class='command-text'>I'm Amy, a Software Engineer Degree Apprentice specialising in Front-End development with React and JavaScript.</span><br/>
+      <span class='command-text'>I love photography, hiking, and reading.</span><br/>
+      <span class='command-text'>Check out my projects with 'projects' or contact me using 'contact'.</span>`,
+    cv: `<span class='command-text'>Would you like to download my CV? (y/n)</span>`,
     projects:
       "<span class='command-text'>Project 1:</span> <a href='https://github.com/s256945/emergency-alert-system' target='_blank' class='command-link'>Emergency Alert System</a> | <span class='command-text'>Project 2:</span> <a href='https://github.com/s256945/5thsmrktbrownies' target='_blank' class='command-link'>Brownies website</a> | <span class='command-text'>Project 3:</span> <a href='https://github.com/s256945/reallyreallygoodreads' target='_blank' class='command-link'>Book review website</a>",
     contact:
@@ -24,9 +27,33 @@ export default function TerminalPortfolio() {
   const handleCommand = (): void => {
     if (input.trim()) {
       setHistory([...history, input]);
-      if (commands[input]) {
+
+      if (awaitingConfirmation) {
+        if (input.toLowerCase() === "y") {
+          window.open("/cv.pdf", "_blank");
+          setOutput([
+            ...output,
+            "> <span class='command-line user-command'>y</span>",
+            "<span class='command-text'>Downloading CV...</span>",
+          ]);
+        } else {
+          setOutput([
+            ...output,
+            "> <span class='command-line user-command'>n</span>",
+            "<span class='command-text'>Download cancelled.</span>",
+          ]);
+        }
+        setAwaitingConfirmation(false);
+      } else if (commands[input]) {
         if (input === "clear") {
           setOutput([]);
+        } else if (input === "cv") {
+          setAwaitingConfirmation(true);
+          setOutput([
+            ...output,
+            `> <span class='command-line user-command'>${input}</span>`,
+            commands[input],
+          ]);
         } else {
           setOutput([
             ...output,
