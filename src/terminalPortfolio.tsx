@@ -13,7 +13,7 @@ export default function TerminalPortfolio() {
     help: "<span class='command-text'>Available commands:</span> <span class='command-text'>ls</span>, <span class='command-text'>about</span>, <span class='command-text'>projects</span>, <span class='command-text'>contact</span>, <span class='command-text'>clear</span>",
     ls: "<span class='command-text'>about/</span>  <span class='command-text'>projects/</span>  <span class='command-text'>contact/</span>",
     about:
-      "<span class='command-text'>I'm Amy Jordan, a Software Engineer Degree Apprentice specializing in React and Flask.</span>",
+      "<span class='command-text'>I'm Amy, a Software Engineer Degree Apprentice specialising in Front-End using React and JS.</span>",
     projects:
       "<span class='command-text'>Project 1:</span> <a href='https://github.com/s256945/emergency-alert-system' target='_blank' class='command-link'>Emergency Alert System</a> | <span class='command-text'>Project 2:</span> <a href='https://github.com/s256945/5thsmrktbrownies' target='_blank' class='command-link'>Brownies website</a> | <span class='command-text'>Project 3:</span> <a href='https://github.com/s256945/reallyreallygoodreads' target='_blank' class='command-link'>Book review website</a>",
     contact:
@@ -125,7 +125,7 @@ export default function TerminalPortfolio() {
   return (
     <div className="terminal-container">
       <div className="terminal-box">
-        <p className="terminal-header">Welcome to Amy's Personal Website</p>
+        <p className="terminal-header">Welcome to Amy's website</p>
         <p className="terminal-subheader">
           Type 'help' for available commands.
         </p>
