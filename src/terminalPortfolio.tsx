@@ -11,11 +11,11 @@ export default function TerminalPortfolio() {
 
   const commands: Record<string, string> = {
     help: "<span class='command-text'>Available commands:</span> <span class='command-text'>ls</span>, <span class='command-text'>about</span>, <span class='command-text'>projects</span>, <span class='command-text'>contact</span>, <span class='command-text'>clear</span>",
-    ls: "<span class='command-text'>about.txt</span>  <span class='command-text'>projects/</span>  <span class='command-text'>contact.txt</span>",
+    ls: "<span class='command-text'>about/</span>  <span class='command-text'>projects/</span>  <span class='command-text'>contact/</span>",
     about:
       "<span class='command-text'>I'm Amy Jordan, a Software Engineer Degree Apprentice specializing in React and Flask.</span>",
     projects:
-      "<span class='command-text'>Project 1:</span> Emergency Alert System | <span class='command-text'>Project 2:</span> Brownies Website",
+      "<span class='command-text'>Project 1:</span> <a href='https://github.com/s256945/emergency-alert-system' target='_blank' class='command-link'>Emergency Alert System</a> | <span class='command-text'>Project 2:</span> <a href='https://github.com/s256945/5thsmrktbrownies' target='_blank' class='command-link'>Brownies website</a> | <span class='command-text'>Project 3:</span> <a href='https://github.com/s256945/reallyreallygoodreads' target='_blank' class='command-link'>Book review website</a>",
     contact:
       "<span class='command-text'>Email:</span> amyj5165@gmail.com | <span class='command-text'>GitHub:</span> <a href='https://github.com/s256945' target='_blank' class='command-link'>github.com/s256945</a>",
     clear: "clear",
@@ -157,3 +157,9 @@ export default function TerminalPortfolio() {
     </div>
   );
 }
+
+// (y/n) to download cv
+// projects open in new tab
+// fix colours to white
+// about me
+// ls?
