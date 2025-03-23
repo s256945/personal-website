@@ -8,6 +8,8 @@ export default function TerminalPortfolio() {
   const [history, setHistory] = useState<string[]>([]);
   const [suggestion, setSuggestion] = useState<string>("");
   const [awaitingConfirmation, setAwaitingConfirmation] = useState(false);
+  const [historyIndex, setHistoryIndex] = useState<number | null>(null);
+
   const outputRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
 
@@ -58,7 +60,7 @@ export default function TerminalPortfolio() {
     
       <span class='command-text'>📂 Project 3:</span> <a href='https://github.com/s256945/reallyreallygoodreads' target='_blank' class='command-link'>Book Review Website</a><br/>
       <span class='project-desc'>A book discovery and review platform for readers.</span><br/>
-      <span class='project-tags'>Tech: React · TypeScript · Firebase</span>
+      <span class='project-tags'>Tech: React · TypeScript · NodeJS</span>
     `,
 
     cv: `
@@ -76,7 +78,7 @@ export default function TerminalPortfolio() {
     sudo: `<span class='command-text'>🛑 Nice try. You’re not root.</span>`,
 
     hack: `<span class='command-text'>💻 Initiating hack.exe... just kidding 😉</span>`,
-    
+
     matrix: `<span class='command-text'>☠️ Welcome to the Matrix... follow the white rabbit.</span>`,
 
     cat: `<pre class='command-ascii'>
@@ -193,9 +195,28 @@ export default function TerminalPortfolio() {
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === "Enter") {
         handleCommand();
+        setHistoryIndex(null);
       } else if (e.key === "ArrowUp") {
-        if (history.length) {
-          setInput(history[history.length - 1]);
+        if (history.length > 0) {
+          e.preventDefault();
+          const newIndex =
+            historyIndex === null
+              ? history.length - 1
+              : Math.max(0, historyIndex - 1);
+          setHistoryIndex(newIndex);
+          setInput(history[newIndex]);
+        }
+      } else if (e.key === "ArrowDown") {
+        if (historyIndex !== null) {
+          e.preventDefault();
+          const newIndex = Math.min(history.length - 1, historyIndex + 1);
+          setHistoryIndex(newIndex);
+          setInput(history[newIndex] || "");
+          if (newIndex >= history.length - 1) {
+            setHistoryIndex(null);
+          } else {
+            setHistoryIndex(newIndex);
+          }
         }
       } else if (e.key === "Tab") {
         // Handle autocomplete when tab is pressed
@@ -210,7 +231,7 @@ export default function TerminalPortfolio() {
     window.addEventListener("keydown", handleKeyDown);
     return () => window.removeEventListener("keydown", handleKeyDown);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [input, output, history, suggestion]);
+  }, [input, suggestion, history, historyIndex]);
 
   useEffect(() => {
     if (outputRef.current) {
@@ -240,13 +261,16 @@ export default function TerminalPortfolio() {
           ))}
         </div>
         <div className="terminal-input">
-          <span>$</span>
+          <span>amy@portfolio:~$</span>
           <div className="input-wrapper">
             <input
               ref={inputRef}
               type="text"
               value={input}
-              onChange={(e) => setInput(e.target.value)}
+              onChange={(e) => {
+                setInput(e.target.value);
+                setHistoryIndex(null);
+              }}
               autoFocus
             />
             {suggestion && (
@@ -258,9 +282,3 @@ export default function TerminalPortfolio() {
     </div>
   );
 }
-
-// (y/n) to download cv
-// projects open in new tab
-// fix colours to white
-// about me
-// ls?
