@@ -76,7 +76,18 @@ export default function TerminalPortfolio() {
 
     easteregg: `<span class='command-text'>🐣 You found a secret command. Congrats, you're officially cool.</span>`,
 
-    sudo: `<span class='command-text'>🛑 Nice try. You’re not root.</span>`,
+    sudo: `
+  <div class='sudo-warning'>
+    <pre class='command-ascii'>
+     █████████████████████████
+     █ 🔒 ACCESS DENIED █
+     █████████████████████████
+    </pre>
+    <span class='command-section-title'>🛑 Unauthorized command attempt detected.</span>
+    <span class='command-desc'>You are not root. This incident will be reported 😉</span>
+    <span class='command-desc'>Try 'help' instead. It's safer.</span>
+  </div>
+`,
 
     hack: `<span class='command-text'>💻 Initiating hack.exe... just kidding 😉</span>`,
 
@@ -97,18 +108,20 @@ export default function TerminalPortfolio() {
     if (input.trim()) {
       setHistory([...history, input]);
 
+      const newUserCommand = `> <span class='command-line user-command'>${input}</span>`;
+
       if (awaitingConfirmation) {
         if (input.toLowerCase() === "y") {
           window.open("/cv.pdf", "_blank");
           setOutput([
             ...output,
-            "> <span class='command-line user-command'>y</span>",
+            newUserCommand,
             "<span class='command-text'>Downloading CV...</span>",
           ]);
         } else {
           setOutput([
             ...output,
-            "> <span class='command-line user-command'>n</span>",
+            newUserCommand,
             "<span class='command-text'>Download cancelled.</span>",
           ]);
         }
@@ -118,27 +131,29 @@ export default function TerminalPortfolio() {
           setOutput([]);
         } else if (input === "cv") {
           setAwaitingConfirmation(true);
-          setOutput([
-            ...output,
-            `> <span class='command-line user-command'>${input}</span>`,
-            commands[input],
-          ]);
+          setOutput([...output, newUserCommand, commands[input]]);
         } else {
-          const newOutput = [
-            ...output,
-            `> <span class='command-line user-command'>${input}</span>`,
-            commands[input],
-          ];
+          const newOutput = [...output, newUserCommand, commands[input]];
           setOutput(newOutput);
 
+          // Trigger matrix effect
           if (input === "matrix") {
             startMatrixEffect();
+          }
+
+          // Trigger sudo glitch
+          if (input === "sudo") {
+            const terminalBox = document.querySelector(".terminal-box");
+            terminalBox?.classList.add("sudo-glitch");
+            setTimeout(() => {
+              terminalBox?.classList.remove("sudo-glitch");
+            }, 2000);
           }
         }
       } else {
         setOutput([
           ...output,
-          `> <span class='command-line user-command'>${input}</span>`,
+          newUserCommand,
           "<span class='command-error'>Command not found.</span> Type '<span class='command-info'>help</span>' for available commands.",
         ]);
         outputRef.current?.classList.add("terminal-shake");
@@ -146,6 +161,7 @@ export default function TerminalPortfolio() {
           outputRef.current?.classList.remove("terminal-shake");
         }, 400);
       }
+
       setInput("");
       setSuggestion("");
     }
