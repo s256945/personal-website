@@ -48,11 +48,18 @@ export default function TerminalPortfolio() {
       `,
 
     projects: `
-        <span class='command-text'>📂 Project 1:</span> <a href='https://github.com/s256945/emergency-alert-system' target='_blank' class='command-link'>Emergency Alert System</a><br/>
-        <span class='command-text'>📂 Project 2:</span> <a href='https://github.com/s256945/5thsmrktbrownies' target='_blank' class='command-link'>Brownies Website</a><br/>
-        <span class='command-text'>📂 Project 3:</span> <a href='https://github.com/s256945/reallyreallygoodreads' target='_blank' class='command-link'>Book Review Website</a><br/>
-        <span class='command-text'>More brewing in /dev/ideas...</span>
-      `,
+      <span class='command-text'>📂 Project 1:</span> <a href='https://github.com/s256945/emergency-alert-system' target='_blank' class='command-link'>Emergency Alert System</a><br/>
+      <span class='project-desc'>An MQTT-based alert system for emergencies and disaster response.</span><br/>
+      <span class='project-tags'>Tech: Python · Flask · Mosquitto · MQTT</span><br/><br/>
+    
+      <span class='command-text'>📂 Project 2:</span> <a href='https://github.com/s256945/5thsmrktbrownies' target='_blank' class='command-link'>Brownies Website</a><br/>
+      <span class='project-desc'>A playful website for a Brownie unit with secure parent area and resources.</span><br/>
+      <span class='project-tags'>Tech: React · Styled Components · HTML/CSS</span><br/><br/>
+    
+      <span class='command-text'>📂 Project 3:</span> <a href='https://github.com/s256945/reallyreallygoodreads' target='_blank' class='command-link'>Book Review Website</a><br/>
+      <span class='project-desc'>A book discovery and review platform for readers.</span><br/>
+      <span class='project-tags'>Tech: React · TypeScript · Firebase</span>
+    `,
 
     cv: `
         <span class='command-text'>📝 Would you like to download my CV? (y/n)</span>
