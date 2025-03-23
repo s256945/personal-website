@@ -73,6 +73,19 @@ export default function TerminalPortfolio() {
 
     easteregg: `<span class='command-text'>🐣 You found a secret command. Congrats, you're officially cool.</span>`,
 
+    sudo: `<span class='command-text'>🛑 Nice try. You’re not root.</span>`,
+
+    hack: `<span class='command-text'>💻 Initiating hack.exe... just kidding 😉</span>`,
+    
+    matrix: `<span class='command-text'>☠️ Welcome to the Matrix... follow the white rabbit.</span>`,
+
+    cat: `<pre class='command-ascii'>
+  /\_/\  
+ ( o.o ) 
+  > ^ <
+</pre>`,
+    fortune: `<span class='command-text'>🔮 Fortune says: "Code is like humor. When you have to explain it, it’s bad."</span>`,
+
     clear: "clear",
   };
 
