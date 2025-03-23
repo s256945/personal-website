@@ -208,6 +208,11 @@ export default function TerminalPortfolio() {
   return (
     <div className="terminal-container">
       <div className="terminal-box">
+        <div className="terminal-controls">
+          <span className="circle red"></span>
+          <span className="circle yellow"></span>
+          <span className="circle green"></span>
+        </div>
         <p className="terminal-header">Welcome to Amy's website</p>
         <p className="terminal-subheader">
           Type 'help' for available commands.

@@ -119,6 +119,21 @@
   animation: shake 0.4s ease-in-out;
 }
 
+.terminal-controls {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+.circle {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  display: inline-block;
+}
+.red { background-color: #ff5f56; }
+.yellow { background-color: #ffbd2e; }
+.green { background-color: #27c93f; }
+
 @media (max-width: 768px) {
   .terminal-header {
     font-size: 1rem;
