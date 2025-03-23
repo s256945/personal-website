@@ -46,9 +46,72 @@
   animation: fadeIn 0.3s ease-in;
 }
 
+.matrix-canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 10;
+  display: block;
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+}
+
+.matrix-active .matrix-canvas {
+  opacity: 1;
+}
+.matrix-fadeout .matrix-canvas {
+  opacity: 0;
+}
+
+.matrix-active .matrix-canvas {
+  display: block;
+}
+
+.matrix-glitch .terminal-output .terminal-line {
+  position: relative;
+  color: #00ff99;
+  animation: glitch-flicker 0.3s infinite;
+}
+
+@keyframes glitch-flicker {
+  0% {
+    opacity: 1;
+    transform: none;
+  }
+  20% {
+    opacity: 0.8;
+    transform: translateX(-1px);
+  }
+  40% {
+    opacity: 0.7;
+    transform: translateX(1px);
+  }
+  60% {
+    opacity: 0.9;
+    transform: translateX(-1px);
+  }
+  80% {
+    opacity: 0.85;
+    transform: translateX(1px);
+  }
+  100% {
+    opacity: 1;
+    transform: none;
+  }
+}
+
 @keyframes fadeIn {
-  from { opacity: 0; transform: translateY(4px); }
-  to { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .user-command {
@@ -137,9 +200,15 @@
   border-radius: 50%;
   display: inline-block;
 }
-.red { background-color: #ff5f56; }
-.yellow { background-color: #ffbd2e; }
-.green { background-color: #27c93f; }
+.red {
+  background-color: #ff5f56;
+}
+.yellow {
+  background-color: #ffbd2e;
+}
+.green {
+  background-color: #27c93f;
+}
 
 .command-section-title {
   color: #66d9ef;
@@ -246,16 +315,31 @@
   .terminal-header {
     font-size: 1rem;
   }
-  .terminal-subheader, .terminal-line, .project-tags, .project-desc {
+  .terminal-subheader,
+  .terminal-line,
+  .project-tags,
+  .project-desc {
     font-size: 0.8rem;
   }
 }
 
 @keyframes shake {
-  0% { transform: translateX(0); }
-  20% { transform: translateX(-4px); }
-  40% { transform: translateX(4px); }
-  60% { transform: translateX(-4px); }
-  80% { transform: translateX(4px); }
-  100% { transform: translateX(0); }
+  0% {
+    transform: translateX(0);
+  }
+  20% {
+    transform: translateX(-4px);
+  }
+  40% {
+    transform: translateX(4px);
+  }
+  60% {
+    transform: translateX(-4px);
+  }
+  80% {
+    transform: translateX(4px);
+  }
+  100% {
+    transform: translateX(0);
+  }
 }

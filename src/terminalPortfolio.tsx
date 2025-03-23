@@ -124,11 +124,16 @@ export default function TerminalPortfolio() {
             commands[input],
           ]);
         } else {
-          setOutput([
+          const newOutput = [
             ...output,
             `> <span class='command-line user-command'>${input}</span>`,
             commands[input],
-          ]);
+          ];
+          setOutput(newOutput);
+
+          if (input === "matrix") {
+            startMatrixEffect();
+          }
         }
       } else {
         setOutput([
@@ -241,6 +246,76 @@ export default function TerminalPortfolio() {
     }
   }, [output]);
 
+  const startMatrixEffect = () => {
+    const canvas = document.getElementById("matrixCanvas") as HTMLCanvasElement;
+    const terminalBox = document.querySelector(".terminal-box");
+    if (!canvas || !terminalBox) return;
+
+    const ctx = canvas.getContext("2d");
+    if (!ctx) return;
+
+    const width = (canvas.width = window.innerWidth);
+    const height = (canvas.height = window.innerHeight);
+    const fontSize = 14;
+    const columns = Math.floor(width / fontSize);
+    const drops: number[] = new Array(columns).fill(1);
+    const characters = "アカサタナハマヤラ0123456789".split("");
+
+    let animationFrameId: number;
+    let fadeOut = false;
+    let fadeOpacity = 0.05;
+
+    const draw = () => {
+      if (!ctx) return;
+
+      // Reduce opacity slowly for fadeout phase
+      const fadeFill = fadeOut
+        ? `rgba(0, 0, 0, ${fadeOpacity})`
+        : "rgba(0, 0, 0, 0.05)";
+      ctx.fillStyle = fadeFill;
+      ctx.fillRect(0, 0, width, height);
+
+      ctx.fillStyle = "#00ff00";
+      ctx.font = `${fontSize}px monospace`;
+
+      for (let i = 0; i < drops.length; i++) {
+        const char = characters[Math.floor(Math.random() * characters.length)];
+        ctx.fillText(char, i * fontSize, drops[i] * fontSize);
+
+        if (!fadeOut) {
+          if (drops[i] * fontSize > height && Math.random() > 0.975) {
+            drops[i] = 0;
+          }
+          drops[i]++;
+        }
+      }
+
+      if (fadeOut) {
+        fadeOpacity += 0.01;
+        if (fadeOpacity >= 0.2) {
+          // stop completely when it's faded out enough
+          cancelAnimationFrame(animationFrameId);
+          const ctxClear = canvas.getContext("2d");
+          ctxClear?.clearRect(0, 0, width, height);
+          document.body.classList.remove("matrix-active");
+          terminalBox.classList.remove("matrix-glitch");
+          return;
+        }
+      }
+
+      animationFrameId = requestAnimationFrame(draw);
+    };
+
+    document.body.classList.add("matrix-active");
+    terminalBox.classList.add("matrix-glitch");
+
+    draw();
+
+    setTimeout(() => {
+      fadeOut = true;
+    }, 5000);
+  };
+
   return (
     <div className="terminal-container">
       <div className="terminal-box">
@@ -263,6 +338,7 @@ export default function TerminalPortfolio() {
             ></p>
           ))}
         </div>
+        <canvas id="matrixCanvas" className="matrix-canvas"></canvas>
         <div className="terminal-input">
           <span>amy@portfolio:~$</span>
           <div className="input-wrapper">
