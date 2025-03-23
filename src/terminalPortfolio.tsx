@@ -119,6 +119,10 @@ export default function TerminalPortfolio() {
           `> <span class='command-line user-command'>${input}</span>`,
           "<span class='command-error'>Command not found.</span> Type '<span class='command-info'>help</span>' for available commands.",
         ]);
+        outputRef.current?.classList.add("terminal-shake");
+        setTimeout(() => {
+          outputRef.current?.classList.remove("terminal-shake");
+        }, 400);
       }
       setInput("");
       setSuggestion("");
