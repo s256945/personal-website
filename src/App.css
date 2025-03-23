@@ -59,6 +59,21 @@
   100% { opacity: 1; transform: translateX(0); }
 }
 
+.hack-progress span {
+  display: inline-block;
+  animation: hack-blink 0.7s step-end infinite;
+  font-weight: bold;
+  font-family: monospace;
+  letter-spacing: 1px;
+  color: #00ff99;
+}
+
+@keyframes hack-blink {
+  50% {
+    opacity: 0.6;
+  }
+}
+
 .matrix-canvas {
   position: absolute;
   top: 0;

@@ -10,6 +10,8 @@ export default function TerminalPortfolio() {
   const [awaitingConfirmation, setAwaitingConfirmation] = useState(false);
   const [historyIndex, setHistoryIndex] = useState<number | null>(null);
 
+  const keySoundRef = useRef<HTMLAudioElement>(null);
+  const enterSoundRef = useRef<HTMLAudioElement>(null);
   const outputRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
 
@@ -89,15 +91,30 @@ export default function TerminalPortfolio() {
   </div>
 `,
 
-    hack: `<span class='command-text'>💻 Initiating hack.exe... just kidding 😉</span>`,
+    hack: `
+  <div class='hack-sequence'>
+    <span class='command-section-title'>💻 Initiating hack.exe...</span>
+    <div class='hack-progress'>
+      <span>▌█▌█▌█▌█▌█▌█▌█▌█▌█▌█▌█▌█▌█▌█▌█▌█▌█▌█▌█▌█▌█▌</span>
+    </div>
+    <span class='command-desc'>Accessing encrypted ports... spoofing MAC address... injecting packets...</span>
+    <span class='command-desc'>Just kidding 😉</span>
+  </div>
+`,
 
     matrix: `<span class='command-text'>☠️ Welcome to the Matrix... follow the white rabbit.</span>`,
 
-    cat: `<pre class='command-ascii'>
-   /\\_/\\  
-  ( o.o ) 
-   > ^ <
-  </pre>`,
+    cat: `
+  <div class='cat-summon'>
+    <span class='command-section-title'>🐾 Summoning cat.exe...</span>
+    <pre class='command-ascii cat-ascii'>
+      /\\_/\\  
+     ( o.o ) 
+      > ^ <
+    </pre>
+    <span class='command-desc'>Here, kitty kitty... 🐈</span>
+  </div>
+`,
 
     fortune: `<span class='command-text'>🔮 Fortune says: "Code is like humor. When you have to explain it, it’s bad."</span>`,
 
@@ -139,6 +156,14 @@ export default function TerminalPortfolio() {
           // Trigger matrix effect
           if (input === "matrix") {
             startMatrixEffect();
+          }
+
+          if (input === "hack") {
+            const terminalBox = document.querySelector(".terminal-box");
+            terminalBox?.classList.add("sudo-glitch"); // reuse sudo-glitch class
+            setTimeout(() => {
+              terminalBox?.classList.remove("sudo-glitch");
+            }, 1500);
           }
 
           // Trigger sudo glitch
@@ -256,6 +281,46 @@ export default function TerminalPortfolio() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [input, suggestion, history, historyIndex]);
 
+  const playTypingSound = () => {
+    const keySound = keySoundRef.current;
+    if (keySound && keySound.paused) {
+      keySound.currentTime = 0;
+      keySound.play().catch(() => {});
+    } else if (keySound && !keySound.paused) {
+      keySound.pause();
+      keySound.currentTime = 0;
+      keySound.play().catch(() => {});
+    }
+  };
+
+  const playEnterSound = () => {
+    const enterSound = enterSoundRef.current;
+    if (enterSound) {
+      enterSound.currentTime = 0;
+      enterSound.play().catch(() => {});
+    }
+  };
+
+  useEffect(() => {
+    const handleTypingSound = (e: KeyboardEvent) => {
+      const isTypingKey = /^[a-zA-Z0-9 .,'"!?@#$%^&*()_+\-=/\\[\]{}]$/.test(
+        e.key
+      );
+      if (isTypingKey) playTypingSound();
+    };
+
+    const handleEnterSound = (e: KeyboardEvent) => {
+      if (e.key === "Enter") playEnterSound();
+    };
+
+    window.addEventListener("keydown", handleTypingSound);
+    window.addEventListener("keydown", handleEnterSound);
+
+    return () => {
+      window.removeEventListener("keydown", handleTypingSound);
+      window.removeEventListener("keydown", handleEnterSound);
+    };
+  }, []);
   useEffect(() => {
     if (outputRef.current) {
       outputRef.current.scrollTop = outputRef.current.scrollHeight;
@@ -374,6 +439,8 @@ export default function TerminalPortfolio() {
           </div>
         </div>
       </div>
+      <audio ref={keySoundRef} src="/key.wav" preload="auto" />
+      <audio ref={enterSoundRef} src="/enter.wav" preload="auto" />
     </div>
   );
 }
