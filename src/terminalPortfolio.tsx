@@ -33,19 +33,18 @@ export default function TerminalPortfolio() {
 
     about: `
         <pre class='command-ascii'>
-   _____ ___.                  __   
-  /  _  \\_ |__   ____  __ ___/  |_ 
- /  /_\  \| __ \ /  _ \|  |  \   __\
-/    |    \ \_\ (  <_> )  |  /|  |  
-\____|__  /___  /\____/|____/ |__|  
-        \/    \/                    
+    _    _                 _   
+   / \\  | |__   ___  _   _| |_ 
+  / _ \\ | '_ \\ / _ \\| | | | __|
+ / ___ \\| |_) | (_) | |_| | |_ 
+/_/   \\_\\_.__/ \\___/ \\__,_|\\__|                
         </pre>
         <span class='command-text'>[system boot: complete]</span><br/>
-        <span class='command-text'>User: Amy Jordan</span><br/>
-        <span class='command-text'>Role: Software Engineer Degree Apprentice (Front-End)</span><br/>
-        <span class='command-text'>Stack: React | JavaScript | TypeScript | Styled Components</span><br/>
-        <span class='command-text'>Studying: Digital & Technology Solutions: Software</span><br/>
-        <span class='command-text'>Interests: photography 📸 | hiking 🥾 | good books 📚</span><br/>
+        <span class='command-text'>User: 👩🏻‍💻 Amy Jordan</span><br/>
+        <span class='command-text'>Role: 🖥️ Software Engineer Degree Apprentice (Front-End)</span><br/>
+        <span class='command-text'>Stack: 🌐 React | JavaScript | TypeScript | Styled Components</span><br/>
+        <span class='command-text'>Studying: 🎓 Digital & Technology Solutions: Software</span><br/>
+        <span class='command-text'>Interests: 🤍 photography 📸 | hiking 🥾 | good books 📚</span><br/>
         <span class='command-text'>Type 'projects' to explore my work, or 'contact' to get in touch.</span>
       `,
 
