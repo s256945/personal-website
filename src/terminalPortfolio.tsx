@@ -1,3 +1,4 @@
+/* eslint-disable no-useless-escape */
 import { useState, useEffect, useRef } from "react";
 import "./App.css";
 
@@ -11,16 +12,60 @@ export default function TerminalPortfolio() {
   const inputRef = useRef<HTMLInputElement>(null);
 
   const commands: Record<string, string> = {
-    help: "<span class='command-text'>Available commands:</span> <span class='command-text'>ls</span>, <span class='command-text'>about</span>, <span class='command-text'>projects</span>, <span class='command-text'>contact</span>, <span class='command-text'>clear</span>",
-    ls: `<span class='command-text'>./about</span> &nbsp; <span class='command-text'>./projects</span> &nbsp; <span class='command-text'>./contact</span> &nbsp; <span class='command-text'>./cv</span>`,
-    about: `<span class='command-text'>I'm Amy, a Software Engineer Degree Apprentice specialising in Front-End development with React and JavaScript.</span><br/>
-      <span class='command-text'>I love photography, hiking, and reading.</span><br/>
-      <span class='command-text'>Check out my projects with 'projects' or contact me using 'contact'.</span>`,
-    cv: `<span class='command-text'>Would you like to download my CV? (y/n)</span>`,
-    projects:
-      "<span class='command-text'>Project 1:</span> <a href='https://github.com/s256945/emergency-alert-system' target='_blank' class='command-link'>Emergency Alert System</a> | <span class='command-text'>Project 2:</span> <a href='https://github.com/s256945/5thsmrktbrownies' target='_blank' class='command-link'>Brownies website</a> | <span class='command-text'>Project 3:</span> <a href='https://github.com/s256945/reallyreallygoodreads' target='_blank' class='command-link'>Book review website</a>",
-    contact:
-      "<span class='command-text'>Email:</span> amyj5165@gmail.com | <span class='command-text'>GitHub:</span> <a href='https://github.com/s256945' target='_blank' class='command-link'>github.com/s256945</a>",
+    help: `
+        <span class='command-text'>Available commands:</span><br/>
+        <span class='command-text'>• ls</span> — list available directories<br/>
+        <span class='command-text'>• about</span> — learn who I am<br/>
+        <span class='command-text'>• projects</span> — view recent builds<br/>
+        <span class='command-text'>• contact</span> — send me a signal<br/>
+        <span class='command-text'>• cv</span> — grab a copy of my CV<br/>
+        <span class='command-text'>• clear</span> — wipe the screen, stay sharp
+      `,
+
+    ls: `
+        <span class='command-text'>📁 ./about</span>&nbsp;&nbsp;
+        <span class='command-text'>📁 ./projects</span>&nbsp;&nbsp;
+        <span class='command-text'>📁 ./contact</span>&nbsp;&nbsp;
+        <span class='command-text'>📄 ./cv</span>
+      `,
+
+    about: `
+        <pre class='command-ascii'>
+   _____ ___.                  __   
+  /  _  \\_ |__   ____  __ ___/  |_ 
+ /  /_\  \| __ \ /  _ \|  |  \   __\
+/    |    \ \_\ (  <_> )  |  /|  |  
+\____|__  /___  /\____/|____/ |__|  
+        \/    \/                    
+        </pre>
+        <span class='command-text'>[system boot: complete]</span><br/>
+        <span class='command-text'>User: Amy Jordan</span><br/>
+        <span class='command-text'>Role: Software Engineer Degree Apprentice (Front-End)</span><br/>
+        <span class='command-text'>Stack: React | JavaScript | TypeScript | Styled Components</span><br/>
+        <span class='command-text'>Studying: Digital & Technology Solutions: Software</span><br/>
+        <span class='command-text'>Interests: photography 📸 | hiking 🥾 | good books 📚</span><br/>
+        <span class='command-text'>Type 'projects' to explore my work, or 'contact' to get in touch.</span>
+      `,
+
+    projects: `
+        <span class='command-text'>📂 Project 1:</span> <a href='https://github.com/s256945/emergency-alert-system' target='_blank' class='command-link'>Emergency Alert System</a><br/>
+        <span class='command-text'>📂 Project 2:</span> <a href='https://github.com/s256945/5thsmrktbrownies' target='_blank' class='command-link'>Brownies Website</a><br/>
+        <span class='command-text'>📂 Project 3:</span> <a href='https://github.com/s256945/reallyreallygoodreads' target='_blank' class='command-link'>Book Review Website</a><br/>
+        <span class='command-text'>More brewing in /dev/ideas...</span>
+      `,
+
+    cv: `
+        <span class='command-text'>📝 Would you like to download my CV? (y/n)</span>
+      `,
+
+    contact: `
+        <span class='command-text'>📫 Email:</span> <a href='mailto:amyj5165@gmail.com' class='command-link'>amyj5165@gmail.com</a><br/>
+        <span class='command-text'>🔗 GitHub:</span> <a href='https://github.com/s256945' target='_blank' class='command-link'>github.com/s256945</a><br/>
+        <span class='command-text'>Say hi. I won’t bite 🤖</span>
+      `,
+
+    easteregg: `<span class='command-text'>🐣 You found a secret command. Congrats, you're officially cool.</span>`,
+
     clear: "clear",
   };
 
