@@ -15,62 +15,64 @@ export default function TerminalPortfolio() {
 
   const commands: Record<string, string> = {
     help: `
-        <span class='command-text'>Available commands:</span><br/>
-        <span class='command-text'>• ls</span> — list available directories<br/>
-        <span class='command-text'>• about</span> — learn who I am<br/>
-        <span class='command-text'>• projects</span> — view recent builds<br/>
-        <span class='command-text'>• contact</span> — send me a signal<br/>
-        <span class='command-text'>• cv</span> — grab a copy of my CV<br/>
-        <span class='command-text'>• clear</span> — wipe the screen, stay sharp
-      `,
+      <span class='command-section-title'>Available commands:</span>
+      <ul class='command-list'>
+        <li><span class='command-text'>ls</span> — list available directories</li>
+        <li><span class='command-text'>about</span> — learn who I am</li>
+        <li><span class='command-text'>projects</span> — view recent builds</li>
+        <li><span class='command-text'>contact</span> — send me a message</li>
+        <li><span class='command-text'>cv</span> — grab a copy of my CV</li>
+        <li><span class='command-text'>clear</span> — wipe the screen, stay sharp</li>
+      </ul>
+    `,
 
     ls: `
-        <span class='command-text'>📁 ./about</span>&nbsp;&nbsp;
-        <span class='command-text'>📁 ./projects</span>&nbsp;&nbsp;
-        <span class='command-text'>📁 ./contact</span>&nbsp;&nbsp;
-        <span class='command-text'>📄 ./cv</span>
-      `,
+      <span class='command-text'>📁 ./about</span>&nbsp;&nbsp;
+      <span class='command-text'>📁 ./projects</span>&nbsp;&nbsp;
+      <span class='command-text'>📁 ./contact</span>&nbsp;&nbsp;
+      <span class='command-text'>📄 ./cv</span>
+    `,
 
     about: `
-        <pre class='command-ascii'>
-    _    _                 _   
-   / \\  | |__   ___  _   _| |_ 
-  / _ \\ | '_ \\ / _ \\| | | | __|
- / ___ \\| |_) | (_) | |_| | |_ 
-/_/   \\_\\_.__/ \\___/ \\__,_|\\__|                
-        </pre>
-        <span class='command-text'>[system boot: complete]</span><br/>
-        <span class='command-text'>User: 👩🏻‍💻 Amy Jordan</span><br/>
-        <span class='command-text'>Role: 🖥️ Software Engineer Degree Apprentice (Front-End)</span><br/>
-        <span class='command-text'>Stack: 🌐 React | JavaScript | TypeScript | Styled Components</span><br/>
-        <span class='command-text'>Studying: 🎓 Digital & Technology Solutions: Software</span><br/>
-        <span class='command-text'>Interests: 🤍 photography 📸 | hiking 🥾 | good books 📚</span><br/>
-        <span class='command-text'>Type 'projects' to explore my work, or 'contact' to get in touch.</span>
-      `,
+      <span class='command-section-title'>👩🏻‍💻 Amy Jordan</span>
+      <ul class='about-list'>
+        <li>🖥️ Software Engineer Degree Apprentice (Front-End)</li>
+        <li>🌐 React · JavaScript · TypeScript · NodeJS</li>
+        <li>🎓 Digital & Technology Solutions: Software</li>
+        <li>🤍 Photography · Hiking · Books</li>
+      </ul>
+      <span class='command-desc'>Type 'projects' to explore my work, or 'contact' to get in touch.</span>
+    `,
 
     projects: `
-      <span class='command-text'>📂 Project 1:</span> <a href='https://github.com/s256945/emergency-alert-system' target='_blank' class='command-link'>Emergency Alert System</a><br/>
-      <span class='project-desc'>An MQTT-based alert system for emergencies and disaster response.</span><br/>
-      <span class='project-tags'>Tech: Python · Flask · Mosquitto · MQTT</span><br/><br/>
-    
-      <span class='command-text'>📂 Project 2:</span> <a href='https://github.com/s256945/5thsmrktbrownies' target='_blank' class='command-link'>Brownies Website</a><br/>
-      <span class='project-desc'>A playful website for a Brownie unit with secure parent area and resources.</span><br/>
-      <span class='project-tags'>Tech: React · Styled Components · HTML/CSS</span><br/><br/>
-    
-      <span class='command-text'>📂 Project 3:</span> <a href='https://github.com/s256945/reallyreallygoodreads' target='_blank' class='command-link'>Book Review Website</a><br/>
-      <span class='project-desc'>A book discovery and review platform for readers.</span><br/>
-      <span class='project-tags'>Tech: React · TypeScript · NodeJS</span>
+      <span class='command-section-title'>📂 Emergency Alert System</span>
+      <a href='https://github.com/s256945/emergency-alert-system' target='_blank' class='command-link'>GitHub Repo</a>
+      <div class='project-desc'>An MQTT pub-sub alert system for emergencies and disaster response.</div>
+      <div class='project-tags'>Tech: Python · Flask · Mosquitto</div>
+      <div class='terminal-divider'></div>
+  
+      <span class='command-section-title'>📂 Brownies Website</span>
+      <a href='https://github.com/s256945/5thsmrktbrownies' target='_blank' class='command-link'>GitHub Repo</a>
+      <div class='project-desc'>Website for my Brownies unit with resources and secure parent area.</div>
+      <div class='project-tags'>Tech: React · Styled Components · HTML/CSS</div>
+      <div class='terminal-divider'></div>
+  
+      <span class='command-section-title'>📂 Book Review Website</span>
+      <a href='https://github.com/s256945/reallyreallygoodreads' target='_blank' class='command-link'>GitHub Repo</a>
+      <div class='project-desc'>A book discovery and review platform for readers.</div>
+      <div class='project-tags'>Tech: React · JavaScript · NodeJS</div>
     `,
 
     cv: `
-        <span class='command-text'>📝 Would you like to download my CV? (y/n)</span>
-      `,
+      <span class='command-text'>📝 Would you like to download my CV? (y/n)</span>
+    `,
 
     contact: `
-        <span class='command-text'>📫 Email:</span> <a href='mailto:amyj5165@gmail.com' class='command-link'>amyj5165@gmail.com</a><br/>
-        <span class='command-text'>🔗 GitHub:</span> <a href='https://github.com/s256945' target='_blank' class='command-link'>github.com/s256945</a><br/>
-        <span class='command-text'>Say hi. I won’t bite 🤖</span>
-      `,
+      <span class='command-section-title'>📫 Contact Details</span>
+      <span class='command-text'>Email:</span> <a href='mailto:amyj5165@gmail.com' class='command-link'>amyj5165@gmail.com</a><br/>
+      <span class='command-text'>GitHub:</span> <a href='https://github.com/s256945' target='_blank' class='command-link'>github.com/s256945</a><br/>
+      <span class='command-desc'>Say hi. I won’t bite 🤖</span>
+    `,
 
     easteregg: `<span class='command-text'>🐣 You found a secret command. Congrats, you're officially cool.</span>`,
 
@@ -81,10 +83,11 @@ export default function TerminalPortfolio() {
     matrix: `<span class='command-text'>☠️ Welcome to the Matrix... follow the white rabbit.</span>`,
 
     cat: `<pre class='command-ascii'>
-  /\_/\  
- ( o.o ) 
-  > ^ <
-</pre>`,
+   /\\_/\\  
+  ( o.o ) 
+   > ^ <
+  </pre>`,
+
     fortune: `<span class='command-text'>🔮 Fortune says: "Code is like humor. When you have to explain it, it’s bad."</span>`,
 
     clear: "clear",
@@ -245,6 +248,7 @@ export default function TerminalPortfolio() {
           <span className="circle red"></span>
           <span className="circle yellow"></span>
           <span className="circle green"></span>
+          <span className="terminal-title">terminal — amy@portfolio</span>
         </div>
         <p className="terminal-header">Welcome to Amy's website</p>
         <p className="terminal-subheader">
