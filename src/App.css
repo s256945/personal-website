@@ -54,6 +54,59 @@
   color: #ff4d4d;
 }
 
+.command-ascii {
+  font-family: "Courier New", Courier, monospace;
+  color: #00ff99;
+  font-size: 1rem;
+  white-space: pre;
+  text-shadow: 0 0 2px #00ff99, 0 0 4px #00ff99;
+  margin-bottom: 1rem;
+  display: block;
+  animation: ascii-pulse 2.5s ease-in-out infinite;
+  position: relative;
+  z-index: 1;
+}
+
+@keyframes ascii-pulse {
+  0% {
+    opacity: 1;
+    text-shadow: 0 0 2px #00ff99, 0 0 5px #00ff99;
+  }
+  50% {
+    opacity: 0.8;
+    text-shadow: 0 0 6px #00ff99, 0 0 12px #00ff99;
+  }
+  100% {
+    opacity: 1;
+    text-shadow: 0 0 2px #00ff99, 0 0 5px #00ff99;
+  }
+}
+
+@keyframes fadeInAscii {
+  0% {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.command-desc {
+  color: #bdbdbd;
+  font-size: 0.85rem;
+  display: block;
+  margin-bottom: 0.3rem;
+  animation: fadeIn 0.6s ease-in-out;
+}
+
+.command-desc .command-text {
+  color: #00ff99;
+  font-weight: bold;
+  font-family: monospace;
+}
+
 @keyframes sudo-glitch-flicker {
   0% {
     opacity: 1;

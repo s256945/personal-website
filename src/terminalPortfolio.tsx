@@ -119,6 +119,24 @@ export default function TerminalPortfolio() {
     fortune: `<span class='command-text'>🔮 Fortune says: "Code is like humor. When you have to explain it, it’s bad."</span>`,
 
     clear: "clear",
+
+    welcome: `
+    <div>
+    <pre class='command-ascii'>
+    _                          _ 
+   / \\   _ __ ___  _   _      | |
+  / _ \\ | '_ \` _ \\| | | |  _  | |
+ / ___ \\| | | | | | |_| | | |_| |
+/_/   \\_\\_| |_| |_|\\__, |  \\___/ 
+                   |___/         
+    </pre>
+    <span class='command-desc'>
+      Welcome to my terminal portfolio!
+    </span>
+    <span class='command-desc'>
+       Type '<span class="command-text">help</span>' to get started.
+    </span>
+  </div>`,
   };
 
   const handleCommand = (): void => {
@@ -396,6 +414,23 @@ export default function TerminalPortfolio() {
       fadeOut = true;
     }, 5000);
   };
+
+  const hasRunOnce = useRef(false);
+
+  useEffect(() => {
+    if (hasRunOnce.current) return;
+    hasRunOnce.current = true;
+
+    const defaultCommand = "welcome";
+    setTimeout(() => {
+      setHistory((prev) => [...prev, defaultCommand]);
+      setOutput((prev) => [
+        ...prev,
+        `> <span class='command-line user-command'>${defaultCommand}</span>`,
+        commands[defaultCommand],
+      ]);
+    }, 300);
+  }, []);
 
   return (
     <div className="terminal-container">
