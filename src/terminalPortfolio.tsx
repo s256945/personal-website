@@ -116,8 +116,12 @@ export default function TerminalPortfolio() {
   </div>
 `,
 
-    fortune: `<span class='command-text'>🔮 Fortune says: "Code is like humor. When you have to explain it, it’s bad."</span>`,
-
+    joke: `
+      <div class='cat-summon'>
+        <span class='command-section-title'>🤖 JokeBot 3000 booting up...</span>
+        <pre class='command-desc'>How many Software Devs does it take to change a lightbulb? None, it's a hardware problem.</pre>
+      </div>
+    `,
     clear: "clear",
 
     welcome: `
@@ -430,7 +434,7 @@ export default function TerminalPortfolio() {
         commands[defaultCommand],
       ]);
     }, 300);
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
