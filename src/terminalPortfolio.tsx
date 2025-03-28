@@ -430,6 +430,7 @@ export default function TerminalPortfolio() {
         commands[defaultCommand],
       ]);
     }, 300);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (

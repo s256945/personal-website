@@ -1,9 +1,15 @@
+@import url('https://fonts.googleapis.com/css2?family=Fira+Code&display=swap');
+
+body {
+  font-family: 'Fira Code', monospace;
+}
+
 .terminal-container {
   height: 100vh;
   background: linear-gradient(145deg, #101010, #1a1a1a, #121212);
   background-color: #121212;
   color: #a9a9a9;
-  font-family: "Courier New", Courier, monospace;
+  font-family: inherit;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -55,16 +61,9 @@
 }
 
 .command-ascii {
-  font-family: "Courier New", Courier, monospace;
-  color: #00ff99;
-  font-size: 1rem;
-  white-space: pre;
-  text-shadow: 0 0 2px #00ff99, 0 0 4px #00ff99;
-  margin-bottom: 1rem;
-  display: block;
-  animation: ascii-pulse 2.5s ease-in-out infinite;
-  position: relative;
-  z-index: 1;
+  font-size: 1.1rem;
+  line-height: 1.2;
+  font-family: inherit;
 }
 
 @keyframes ascii-pulse {
@@ -93,18 +92,10 @@
   }
 }
 
-.command-desc {
-  color: #bdbdbd;
-  font-size: 0.85rem;
-  display: block;
-  margin-bottom: 0.3rem;
-  animation: fadeIn 0.6s ease-in-out;
-}
-
 .command-desc .command-text {
   color: #00ff99;
   font-weight: bold;
-  font-family: monospace;
+  font-family: inherit;
 }
 
 @keyframes sudo-glitch-flicker {
@@ -134,7 +125,7 @@
   display: inline-block;
   animation: hack-blink 0.7s step-end infinite;
   font-weight: bold;
-  font-family: monospace;
+  font-family: inherit;
   letter-spacing: 1px;
   color: #00ff99;
 }
@@ -242,6 +233,8 @@
 .terminal-input input {
   background-color: black;
   color: #a9a9a9;
+  font-size: 1rem;
+  font-family: inherit;
   width: 100%;
   border: none;
   outline: none;
@@ -345,7 +338,7 @@
 
 .command-desc {
   color: #bdbdbd;
-  font-size: 0.85rem;
+  font-size: 1rem;
   display: block;
   margin-top: 0.5rem;
 }
