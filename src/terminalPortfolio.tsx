@@ -36,15 +36,18 @@ export default function TerminalPortfolio() {
     `,
 
     about: `
-      <span class='command-section-title'>👩🏻‍💻 Amy Jordan</span>
-      <ul class='about-list'>
-        <li>🖥️ Software Engineer Degree Apprentice (Front-End)</li>
-        <li>🌐 React · JavaScript · TypeScript · NodeJS</li>
-        <li>🎓 Digital & Technology Solutions: Software</li>
-        <li>🤍 Photography · Hiking · Books</li>
-      </ul>
-      <span class='command-desc'>Type 'projects' to explore my work, or 'contact' to get in touch.</span>
-    `,
+    <span class="command-section-title">👩🏻‍💻 Amy Jordan</span>
+    <span class="command-desc">Code, cameras, and tiny adventures</span>
+    <ul class="about-list">
+      <li><span class="command-text">💼 Role:</span> Degree Apprentice (Software Engineer)</li>
+      <li><span class="command-text">🧠 Stack:</span> React · TypeScript · JavaScript · NodeJS</li>
+      <li><span class="command-text">🎓 Studying:</span> Digital & Tech Solutions: Software Pathway</li>
+      <li><span class="command-text">🎨 Interests:</span> Photography · Hiking · Books · Doodles</li>
+    </ul>
+    <div class="terminal-divider"></div>
+    <span class="command-desc">Type '<span class="command-text">projects</span>' to explore what I’ve built, or '<span class="command-text">contact</span>' to get in touch.</span>
+
+`,
 
     projects: `
       <span class='command-section-title'>📂 Emergency Alert System</span>
