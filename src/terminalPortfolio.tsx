@@ -21,6 +21,8 @@ export default function TerminalPortfolio() {
       <ul class='command-list'>
         <li><span class='command-text'>ls</span> — list available directories</li>
         <li><span class='command-text'>about</span> — learn who I am</li>
+        <li><span class='command-text'>experience</span> — daily dev role</li>
+        <li><span class='command-text'>skills</span> — technical skills i bring</li>
         <li><span class='command-text'>projects</span> — view recent builds</li>
         <li><span class='command-text'>contact</span> — send me a message</li>
         <li><span class='command-text'>cv</span> — grab a copy of my CV</li>
@@ -30,6 +32,8 @@ export default function TerminalPortfolio() {
 
     ls: `
       <span class='command-text'>📁 ./about</span>&nbsp;&nbsp;
+      <span class='command-text'>📁 ./experience</span>&nbsp;&nbsp;
+      <span class='command-text'>📁 ./skills</span>&nbsp;&nbsp;
       <span class='command-text'>📁 ./projects</span>&nbsp;&nbsp;
       <span class='command-text'>📁 ./contact</span>&nbsp;&nbsp;
       <span class='command-text'>📄 ./cv</span>
@@ -46,7 +50,25 @@ export default function TerminalPortfolio() {
     </ul>
     <div class="terminal-divider"></div>
     <span class="command-desc">Type '<span class="command-text">projects</span>' to explore what I’ve built, or '<span class="command-text">contact</span>' to get in touch.</span>
+`,
 
+    experience: `
+    <span class='command-section-title'>💼 Experience</span>
+    <ul class='about-list'>
+      <li>Degree Apprentice Software Engineer (Front-End) @ BT</li>
+      <li>Contributing to internal tools and external client projects</li>
+      <li>Used to balancing academic study with real-world deadlines</li>
+      <li>Comfortable working in agile teams, writing docs, and giving demos</li>
+    </ul>
+`,
+
+    skills: `
+  <span class='command-section-title'>🛠️ Skills</span>
+  <ul class='about-list'>
+    <li><span class='command-text'>Frontend:</span> React · TypeScript · JavaScript · HTML · CSS</li>
+    <li><span class='command-text'>Backend:</span> NodeJS · Express · Python · Flask</li>
+    <li><span class='command-text'>Tools:</span> Git · VSCode · Webpack · Vercel</li>
+  </ul>
 `,
 
     projects: `
